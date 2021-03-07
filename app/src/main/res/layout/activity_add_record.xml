@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    tools:context=".AddRecordActivity">
+
+    <TextView
+        android:id="@+id/display_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="Personal Information"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="16dp"
+        android:textStyle="bold" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:cardCornerRadius="50dp"
+        app:cardElevation="4dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/display_text"
+        android:layout_marginTop="12dp">
+        <ImageView
+            android:id="@+id/personImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_action_camera" />
+    </androidx.cardview.widget.CardView>
+
+
+    <EditText
+        android:id="@+id/personName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Name"
+        android:layout_below="@+id/card_view"
+        android:maxLength="20"
+        android:padding="10dp"
+        android:layout_marginTop="16dp"
+        android:inputType="textPersonName|textCapWords"
+        android:background="@drawable/bg_edit_text"/>
+
+
+    <EditText
+        android:id="@+id/personAge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Age"
+        android:layout_below="@+id/personName"
+        android:padding="10dp"
+        android:maxLength="2"
+        android:layout_marginTop="16dp"
+        android:inputType="number"
+        android:background="@drawable/bg_edit_text"/>
+
+
+    <EditText
+        android:id="@+id/personPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Phone"
+        android:layout_below="@+id/personAge"
+        android:padding="10dp"
+        android:layout_marginTop="16dp"
+        android:inputType="phone"
+        android:maxLength="10"
+        android:background="@drawable/bg_edit_text"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/personPhone"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        app:elevation="6dp"
+        app:cornerRadius="8dp"
+        android:textAllCaps="false"
+        android:text="Save Info"
+        android:textStyle="bold"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:paddingBottom="12dp"
+        android:paddingTop="12dp"/>
+</RelativeLayout>
