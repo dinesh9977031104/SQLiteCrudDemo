@@ -1,4 +1,4 @@
-package com.example.sqlitecrudoperation;
+package com.example.sqlitecrudoperation.model;
 
 public class PersonInfo {
 

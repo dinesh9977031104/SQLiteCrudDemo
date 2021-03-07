@@ -1,4 +1,4 @@
-package com.example.sqlitecrudoperation;
+package com.example.sqlitecrudoperation.adapter;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -12,12 +12,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.sqlitecrudoperation.R;
+import com.example.sqlitecrudoperation.activity.EditRecordActivity;
+import com.example.sqlitecrudoperation.activity.MainActivity;
+import com.example.sqlitecrudoperation.model.PersonInfo;
+import com.example.sqlitecrudoperation.sqlite.DatabaseHelper;
+
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class Adapter extends RecyclerView.Adapter<Adapter.Holder>{
+public class Adapter extends RecyclerView.Adapter<Adapter.Holder> {
 
     private Context context;
     private ArrayList<PersonInfo> arrayList;
@@ -32,7 +38,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Holder>{
     @NonNull
     @Override
     public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.row,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.row, parent, false);
 
         return new Holder(view);
     }
@@ -60,14 +66,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Holder>{
             public void onClick(View view) {
 
                 editDialog(
-                        ""+position,
-                        ""+id,
-                        ""+name,
-                        ""+age,
-                        ""+phone,
-                        ""+image,
-                        ""+addTimeStamp,
-                        ""+updateTimeStamp
+                        "" + position,
+                        "" + id,
+                        "" + name,
+                        "" + age,
+                        "" + phone,
+                        "" + image,
+                        "" + addTimeStamp,
+                        "" + updateTimeStamp
                 );
             }
         });
@@ -75,7 +81,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Holder>{
         holder.ivDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                deleteDialog(""+id);
+                deleteDialog("" + id);
             }
         });
 
@@ -93,10 +99,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Holder>{
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-               databaseHelper.deleteInfo(id);
-                ((MainActivity)context).onResume();
+                databaseHelper.deleteInfo(id);
+                ((MainActivity) context).onResume();
                 Toast.makeText(context, "Item Deleted!", Toast.LENGTH_SHORT).show();
-               dialogInterface.dismiss();
+                dialogInterface.dismiss();
             }
         });
 
@@ -120,15 +126,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Holder>{
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Intent intent = new Intent(context,EditRecordActivity.class);
-                intent.putExtra("id",id);
-                intent.putExtra("name",name);
-                intent.putExtra("age",age);
-                intent.putExtra("phone",phone);
-                intent.putExtra("image",image);
-                intent.putExtra("add_time",addTimeStamp);
-                intent.putExtra("update_time",updateTimeStamp);
-                intent.putExtra("editMode",true);
+                Intent intent = new Intent(context, EditRecordActivity.class);
+                intent.putExtra("id", id);
+                intent.putExtra("name", name);
+                intent.putExtra("age", age);
+                intent.putExtra("phone", phone);
+                intent.putExtra("image", image);
+                intent.putExtra("add_time", addTimeStamp);
+                intent.putExtra("update_time", updateTimeStamp);
+                intent.putExtra("editMode", true);
                 context.startActivity(intent);
                 dialogInterface.dismiss();
             }
@@ -137,7 +143,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Holder>{
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-           dialogInterface.cancel();
+                dialogInterface.cancel();
             }
         });
         builder.create().show();
@@ -148,7 +154,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Holder>{
         return arrayList.size();
     }
 
-    class Holder extends RecyclerView.ViewHolder{
+    class Holder extends RecyclerView.ViewHolder {
 
         ImageView ivPerson, ivEdit, ivDelete;
         TextView tvName, tvAge, tvPhone;
@@ -160,7 +166,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Holder>{
             tvName = itemView.findViewById(R.id.tvPersonName);
             tvAge = itemView.findViewById(R.id.tvPersonAge);
             tvPhone = itemView.findViewById(R.id.tvPersonPhone);
-            ivEdit =itemView.findViewById(R.id.ivEdit);
+            ivEdit = itemView.findViewById(R.id.ivEdit);
             ivDelete = itemView.findViewById(R.id.ivDelete);
 
         }

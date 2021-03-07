@@ -1,15 +1,19 @@
-package com.example.sqlitecrudoperation;
-
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
+package com.example.sqlitecrudoperation.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 
+import com.example.sqlitecrudoperation.R;
+import com.example.sqlitecrudoperation.adapter.Adapter;
+import com.example.sqlitecrudoperation.sqlite.Constants;
+import com.example.sqlitecrudoperation.sqlite.DatabaseHelper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         actionBar = getSupportActionBar();
-        actionBar.setTitle("CRUD Operation");
+        actionBar.setTitle("All Record's");
         databaseHelper = new DatabaseHelper(this);
 
         recyclerView = findViewById(R.id.recyclerView);
@@ -45,19 +49,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showRecord() {
-        Adapter adapter = new Adapter(MainActivity.this,databaseHelper.getAllData(Constants.C_ADD_TIMESTAMP + " DESC"));
+        Adapter adapter = new Adapter(MainActivity.this, databaseHelper.getAllData(Constants.C_ADD_TIMESTAMP + " DESC"));
         recyclerView.setAdapter(adapter);
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         showRecord();
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == event.KEYCODE_BACK){
+        if (keyCode == event.KEYCODE_BACK) {
             moveTaskToBack(true);
         }
         return super.onKeyDown(keyCode, event);

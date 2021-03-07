@@ -8,12 +8,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:hardwareAccelerated="false"
         android:largeHeap="true"
         android:theme="@style/Theme.SQLiteCrudOperation">
-        <activity android:name=".EditRecordActivity"></activity>
-        <activity android:name=".AddRecordActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.EditRecordActivity"></activity>
+        <activity android:name=".activity.AddRecordActivity" />
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

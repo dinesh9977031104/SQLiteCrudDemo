@@ -1,4 +1,4 @@
-package com.example.sqlitecrudoperation;
+package com.example.sqlitecrudoperation.sqlite;
 
 public class Constants {
 
@@ -25,7 +25,6 @@ public class Constants {
             + C_ADD_TIMESTAMP + " TEXT,"
             + C_UPDATE_TIMESTAMP + " TEXT"
             + ");";
-
 
 
 }
